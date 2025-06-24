@@ -42,7 +42,7 @@ class SavingsAccount extends BankAccount {
 }
 
 
-public class CurrentAccount extends BankAccount {
+class CurrentAccount extends BankAccount {
     private double overdraftLimit;
 
     public CurrentAccount(String accountNumber, double overdraftLimit) {
