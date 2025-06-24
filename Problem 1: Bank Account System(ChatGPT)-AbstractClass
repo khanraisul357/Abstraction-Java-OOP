@@ -1,0 +1,85 @@
+public abstract class BankAccount {
+    protected String accountNumber;
+    protected double balance;
+
+    public BankAccount(String accountNumber) {
+        this.accountNumber = accountNumber;
+        this.balance = 0.0;
+    }
+
+    abstract void deposit(double amount);
+    abstract void withdraw(double amount);
+    abstract void displayAccountDetails();
+}
+
+public class SavingsAccount extends BankAccount {
+    private double interestRate;
+
+    public SavingsAccount(String accountNumber, double interestRate) {
+        super(accountNumber);
+        this.interestRate = interestRate;
+    }
+
+    void deposit(double amount) {
+        double interest = amount * (interestRate / 100);
+        balance += amount + interest;
+    }
+
+    void withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+        } else {
+            System.out.println("Insufficient funds in savings account.");
+        }
+    }
+
+    void displayAccountDetails() {
+        System.out.println("Account Type: Savings");
+        System.out.println("Account Number: " + accountNumber);
+        System.out.println("Balance: " + balance);
+    }
+}
+
+public class CurrentAccount extends BankAccount {
+    private double overdraftLimit;
+
+    public CurrentAccount(String accountNumber, double overdraftLimit) {
+        super(accountNumber);
+        this.overdraftLimit = overdraftLimit;
+    }
+
+    void deposit(double amount) {
+        balance += amount;
+    }
+
+    void withdraw(double amount) {
+        if (balance + overdraftLimit >= amount) {
+            balance -= amount;
+        } else {
+            System.out.println("Overdraft limit exceeded!");
+        }
+    }
+
+    void displayAccountDetails() {
+        System.out.println("Account Type: Current");
+        System.out.println("Account Number: " + accountNumber);
+        System.out.println("Balance: " + balance);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        BankAccount savings = new SavingsAccount("SA-1001", 5.0);
+        BankAccount current = new CurrentAccount("CA-2001", 2000.0);
+
+        System.out.println("Savings Account:");
+        savings.deposit(5000);
+        savings.withdraw(2000);
+        savings.displayAccountDetails();
+
+        System.out.println("\nCurrent Account:");
+        current.deposit(10000);
+        current.withdraw(11000);
+        current.displayAccountDetails();
+    }
+}
