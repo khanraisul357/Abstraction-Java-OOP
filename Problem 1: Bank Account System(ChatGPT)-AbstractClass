@@ -12,6 +12,7 @@ abstract class BankAccount {
     abstract void displayAccountDetails();
 }
 
+
 public class SavingsAccount extends BankAccount {
     private double interestRate;
 
