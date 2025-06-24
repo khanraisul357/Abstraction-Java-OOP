@@ -69,8 +69,10 @@ class CurrentAccount extends BankAccount {
     }
 }
 
+
 public class Main {
     public static void main(String[] args) {
+
         BankAccount savings = new SavingsAccount("SA-1001", 5.0);
         BankAccount current = new CurrentAccount("CA-2001", 2000.0);
 
@@ -83,5 +85,6 @@ public class Main {
         current.deposit(10000);
         current.withdraw(11000);
         current.displayAccountDetails();
+
     }
 }
