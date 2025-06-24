@@ -1,90 +1,110 @@
 abstract class BankAccount {
-    protected String accountNumber;
-    protected double balance;
+	
+	protected String accNumber;
+	public String name;
+	protected double balance;
+	
+	public BankAccount(String accNumber,String name,double balance){
+		this.accNumber=accNumber;
+		this.name=name;
+		this.balance=balance;
+	}
+	
+	
+	abstract void deposit(double amount);
 
-    public BankAccount(String accountNumber) {
-        this.accountNumber = accountNumber;
-        this.balance = 0.0;
-    }
+	abstract void withdraw(double amount);
 
-    abstract void deposit(double amount);
-    abstract void withdraw(double amount);
-    abstract void displayAccountDetails();
+	abstract void displayAccountDetails();
+
 }
 
 
-class SavingsAccount extends BankAccount {
-    private double interestRate;
+class SavingsAccount extends BankAccount{
+	
+	private double interestRate;
+	
+	public SavingsAccount(String accNumber,String name,double balance) {
+		super(accNumber,name,balance);
+	}
 
-    public SavingsAccount(String accountNumber, double interestRate) {
-        super(accountNumber);
-        this.interestRate = interestRate;
-    }
-
-    void deposit(double amount) {
-        double interest = amount * (interestRate / 100);
-        balance += amount + interest;
-    }
+	public void setinterestRate(double percentage) {
+		interestRate=percentage;
+	}
+	
+	void deposit(double amount) {
+		double interest=amount*(interestRate/100);
+		balance+=amount+interest;
+		
+	}
 
     void withdraw(double amount) {
-        if (amount <= balance) {
-            balance -= amount;
-        } else {
-            System.out.println("Insufficient funds in savings account.");
-        }
-    }
+		System.out.println("Amount Withdrawn = "+amount);
+		balance-=amount;
+	}
 
-    void displayAccountDetails() {
-        System.out.println("Account Type: Savings");
-        System.out.println("Account Number: " + accountNumber);
-        System.out.println("Balance: " + balance);
-    }
+	void displayAccountDetails() {
+		System.out.println("Account Type : Savings Account");
+		System.out.println("Account Number : "+accNumber);
+		System.out.println("Account Holder Name : "+name);
+		System.out.println("Account Balance : "+ balance);
+	}
 }
 
 
-class CurrentAccount extends BankAccount {
-    private double overdraftLimit;
+class CurrentAccount extends BankAccount{
+	
+	private double overdraftLimit;
+	
+	public CurrentAccount(String accNumber,String name,double balance) {
+		super(accNumber,name,balance);
+	}
 
-    public CurrentAccount(String accountNumber, double overdraftLimit) {
-        super(accountNumber);
-        this.overdraftLimit = overdraftLimit;
-    }
-
-    void deposit(double amount) {
-        balance += amount;
-    }
+	public void setOverDraftLimit(double overdraftLimit) {
+		this.overdraftLimit=overdraftLimit;
+	}
+	
+	void deposit(double amount) {
+		balance+=amount;
+	}
 
     void withdraw(double amount) {
-        if (balance + overdraftLimit >= amount) {
-            balance -= amount;
-        } else {
-            System.out.println("Overdraft limit exceeded!");
-        }
-    }
+		if(balance+overdraftLimit>=amount) {
+			balance-=amount;
+		}
+		else {
+			System.out.println("Overdraft limit exceeded!");
+		}
+	}
 
-    void displayAccountDetails() {
-        System.out.println("Account Type: Current");
-        System.out.println("Account Number: " + accountNumber);
-        System.out.println("Balance: " + balance);
-    }
+	void displayAccountDetails() {
+		System.out.println("Account Type : Current Account");
+		System.out.println("Account Number : "+accNumber);
+		System.out.println("Account Holder Name : Md Raisul Islam Khan"+name);
+		System.out.println("Account Balance : "+ balance);
+	}
+
 }
 
 
 public class Main {
-    public static void main(String[] args) {
 
-        BankAccount savings = new SavingsAccount("SA-1001", 5.0);
-        BankAccount current = new CurrentAccount("CA-2001", 2000.0);
+	public static void main(String[] args) {
+		
+		BankAccount savings=new SavingsAccount("0121 2191 6800","Md Raisul Islam Khan",3000);
+		BankAccount current=new CurrentAccount("0121 2191 6800","Md Raisul Islam Khan",1000);
+	
+		
+		((SavingsAccount) savings).setinterestRate(10);
+		savings.deposit(5000);
+		savings.withdraw(2000);
+		savings.displayAccountDetails();
+		System.out.println();
+		((CurrentAccount)current).setOverDraftLimit(500);
+		current.deposit(10000);
+		current.withdraw(4000);
+		current.displayAccountDetails();
+	
+	}
 
-        System.out.println("Savings Account:");
-        savings.deposit(5000);
-        savings.withdraw(2000);
-        savings.displayAccountDetails();
-
-        System.out.println("\nCurrent Account:");
-        current.deposit(10000);
-        current.withdraw(11000);
-        current.displayAccountDetails();
-
-    }
 }
