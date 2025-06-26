@@ -34,5 +34,5 @@ class FullTimeEmployee extends Employee{
 		return monthlySalary;
 	}
 	
-
 }
+
