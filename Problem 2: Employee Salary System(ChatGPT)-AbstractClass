@@ -60,3 +60,33 @@ class PartTimeEmployee extends Employee{
 	}
 
 }
+
+
+public class Main {
+	
+	public static void printSalary(FullTimeEmployee emp) {
+	    System.out.println("Employee Name: " + emp.getName());
+	    System.out.println("Employee ID: " + emp.getEmployeeID());
+	    System.out.println("Calculated Salary: " + emp.calculateSalary());
+	}
+
+	public static void printSalary(PartTimeEmployee emp) {
+	    System.out.println("Employee Name: " + emp.getName());
+	    System.out.println("Employee ID: " + emp.getEmployeeID());
+	    System.out.println("Salary Per Hour: " + emp.getRate());
+	    System.out.println("Working Hour: " + emp.getWorkingHour());
+	    System.out.println("Calculated Salary: " + emp.calculateSalary());
+	}
+
+	public static void main(String[] args) {
+		
+		Employee full=new FullTimeEmployee("Md Raisul Islam Khan",241,100000);
+		Employee part=new PartTimeEmployee("Irfan Hossain Najat",345,500,5);
+
+		printSalary((FullTimeEmployee)full);
+		System.out.println();
+		printSalary((PartTimeEmployee)part);		 
+		
+	}
+
+}
