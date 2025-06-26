@@ -19,3 +19,20 @@ abstract class Employee {
         public abstract double calculateSalary();
 
 }
+
+
+class FullTimeEmployee extends Employee{
+	
+	private double monthlySalary;
+	
+	public FullTimeEmployee(String name,int employeeID,double monthlySalary) {
+		super(name,employeeID);
+		this.monthlySalary=monthlySalary;
+	}
+
+	public double calculateSalary() {
+		return monthlySalary;
+	}
+	
+
+}
