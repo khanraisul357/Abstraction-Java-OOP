@@ -1,4 +1,4 @@
-public abstract class Employee {
+abstract class Employee {
 	
 	private String name;
 	private int employeeID;
@@ -7,18 +7,15 @@ public abstract class Employee {
 		this.name=name;
 		this.employeeID=employeeID;
 	}
-	
-	
-	public abstract double calculateSalary();
-
 
 	public String getName() {
 		return name;
 	}
 
-
 	public int getEmployeeID() {	
 		return employeeID;
 	}
+
+        public abstract double calculateSalary();
 
 }
