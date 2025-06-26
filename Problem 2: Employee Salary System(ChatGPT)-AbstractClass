@@ -93,7 +93,7 @@ public class Main {
 
 #Description:
 
-Abstract Class: Employee
+-->Abstract Class: Employee
 Subclasses: FullTimeEmployee, PartTimeEmployee
 
 Variables in Employee:
