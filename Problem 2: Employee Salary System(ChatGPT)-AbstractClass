@@ -94,7 +94,7 @@ public class Main {
 #Description:
 
 -->Abstract Class: Employee
-Subclasses: FullTimeEmployee, PartTimeEmployee
+-->Subclasses: FullTimeEmployee, PartTimeEmployee
 
 Variables in Employee:
 name (String)
