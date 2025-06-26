@@ -90,3 +90,24 @@ public class Main {
 	}
 
 }
+
+#Description:
+
+Abstract Class: Employee
+Subclasses: FullTimeEmployee, PartTimeEmployee
+
+Variables in Employee:
+name (String)
+employeeId (int)
+
+Abstract Methods:
+double calculateSalary()
+
+FullTimeEmployee-specific:
+monthlySalary (double)
+
+PartTimeEmployee-specific:
+hourlyRate, hoursWorked (double)
+
+Instructions:
+Create a method to accept Employee type and print salary.
