@@ -111,3 +111,25 @@ public class Main {
 
 
 #Description:
+
+Abstract Class: BankAccount
+Subclasses: SavingsAccount, CurrentAccount
+
+Variables in BankAccount:
+accountNumber (String)
+balance (double)
+
+Abstract Methods:
+void deposit(double amount)
+void withdraw(double amount)
+void displayAccountDetails()
+
+SavingsAccount-specific:
+Maintain interestRate (double)
+Add interest on deposit
+
+CurrentAccount-specific:
+Maintain overdraftLimit (double)
+
+Instructions:
+Use polymorphism to operate on BankAccount reference.
