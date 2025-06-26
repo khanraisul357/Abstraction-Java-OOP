@@ -112,8 +112,8 @@ public class Main {
 
 #Description:
 
-Abstract Class: BankAccount
-Subclasses: SavingsAccount, CurrentAccount
+-->Abstract Class: BankAccount
+-->Subclasses: SavingsAccount, CurrentAccount
 
 Variables in BankAccount:
 accountNumber (String)
